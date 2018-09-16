@@ -1,0 +1,29 @@
+
+<div class="w3-bar">
+  <span class=" w3-left ">{{data.cardTitle}}</span>
+  <button class="w3-button w3-right w3-btn w3-white w3-border w3-border-red w3-round-large" (click)="delete()">Delete </button>
+</div>
+
+<div class="w3-container w3-border w3-leftbar" style="margin-top: 1%;">
+  <p>{{data.cardDesc}}</p>
+</div>
+
+      <textarea class="w3-input w3-border w3-leftbar" style="margin-top: 1%;" type="text" placeholder="Comment.." [(ngModel)]="Comment"></textarea>
+
+
+<div class="w3-bar" style="margin-top: 1%;">
+  
+  <button class="w3-button w3-left w3-light-grey w3-round-large" (click)="addComment()">Add Comment </button>
+</div>
+
+<div style="overflow-x:auto;">
+  <table   *ngFor="let item of data.cardComments">
+    <tr>
+      <td>{{item.comment}}</td>
+      <td>{{item.date}}</td>      
+    </tr>
+    
+  </table>
+</div>
+	
+
