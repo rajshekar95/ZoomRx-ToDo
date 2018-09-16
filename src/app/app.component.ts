@@ -237,7 +237,13 @@ export class AppComponent implements OnInit {
 		});
 		dialogRef.afterClosed().subscribe(result => {
 			if(result.title != undefined){
-				var id = Number(this.items[this.items.length-1].lid)+1;
+				if(this.items.length > 0 ){
+					var id = Number(this.items[this.items.length-1].lid)+1;
+				}
+				else{
+					var id = 0;
+				}
+				
 				var data = {
 						"lid":id,
 						"Title":result.title,
@@ -358,6 +364,7 @@ export class DialogForCardDetails {
 			};
 			this.data.cardComments.push(tempVal);
 			this.finalResult = this.data;
+			this.Comment = "";
 		}
 	}
 }  
