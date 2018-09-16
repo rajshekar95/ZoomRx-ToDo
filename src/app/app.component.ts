@@ -295,7 +295,7 @@ export class DialogForAddCard {
 	public cardDescription: any;
 	constructor(
 		public dialogRef: MatDialogRef<DialogForAddCard>,
-		@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+		@Inject(MAT_DIALOG_DATA) public data: any) {}
 
 	onClickOk(): void {
 		let data = {
@@ -316,7 +316,7 @@ export class DialogForNewList {
 	public Title : any;
 	constructor(
 		public dialogRef: MatDialogRef<DialogForNewList>,
-		@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+		@Inject(MAT_DIALOG_DATA) public data: any) {}
 		onClickOk(): void {
 			let data = {
 			"title": this.Title
@@ -334,10 +334,10 @@ export class DialogForNewList {
 })
 export class DialogForCardDetails {
 	public Comment : any;
-	public finalResult : [];
+	public finalResult = [];
 	constructor(
 		public dialogRef: MatDialogRef<DialogForCardDetails>,
-		@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+		@Inject(MAT_DIALOG_DATA) public data: any) {}
 	delete(){
 		var data = {
 			"destroy" : true
@@ -345,13 +345,13 @@ export class DialogForCardDetails {
 		this.dialogRef.close(data);
 	}
 	addComment(){
-		var objDate = new Date(),
-		locale = "en-us",
+		var objDate = new Date();
+		var locale = "en-us";
 		var month = (objDate.toLocaleString(locale, { month: "short" }));
 		var day = objDate.getUTCDate();
 		var year = objDate.getUTCFullYear();
 		var date = day + " " + month +  " " + year;
-		if(this.Comment != undefined && this.Comment != "" && this.comment != " "){
+		if(this.Comment != undefined && this.Comment != "" && this.Comment != " "){
 			var tempVal = {
 				"comment": this.Comment,
 				"date":  date
@@ -359,8 +359,5 @@ export class DialogForCardDetails {
 			this.data.cardComments.push(tempVal);
 			this.finalResult = this.data;
 		}
-	}
-	onClickOk(): void {
-		this.diazlogRef.close(this.finalResult);
 	}
 }  
